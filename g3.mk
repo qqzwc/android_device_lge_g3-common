@@ -16,7 +16,7 @@
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
-$(call inherit-product-if-exists, vendor/lge/g3-common/g3-common-vendor.mk)
+$(call inherit-product-if-exists, vendor/lge/g3duo-common/g3duo-common-vendor.mk)
 
 # Overlay
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
@@ -193,7 +193,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     fstab.g3 \
     init.g3.rc \
-		init.class_main.sh \
+    init.class_main.sh \
     init.g3.usb.rc \
     init.g3.usb.sh \
     init.galbi.class_core.sh \

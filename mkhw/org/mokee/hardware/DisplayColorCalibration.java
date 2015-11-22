@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2014 The CyanogenMod Project
+ * Copyright (C) 2014 The MoKee OpenSource Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,25 +15,37 @@
  * limitations under the License.
  */
 
-package org.cyanogenmod.hardware;
+package org.mokee.hardware;
 
 import java.io.File;
-import org.cyanogenmod.hardware.util.FileUtils;
+import java.util.Scanner;
+import org.mokee.hardware.util.FileUtils;
 
-public class TapToWake {
-
-    private static String CONTROL_PATH = "/sys/devices/virtual/input/lge_touch/lpwg_notify";
+public class DisplayColorCalibration {
+    private static final String COLOR_FILE = "/sys/class/graphics/fb0/rgb";
 
     public static boolean isSupported() {
-        File f = new File(CONTROL_PATH);
+        File f = new File(COLOR_FILE);
         return f.exists();
     }
 
-    public static boolean isEnabled()  {
-        return "1".equals(FileUtils.readOneLine(CONTROL_PATH));
+    public static int getMaxValue()  {
+        return 32768;
     }
 
-    public static boolean setEnabled(boolean state)  {
-        return FileUtils.writeLine(CONTROL_PATH, (state ? "1 1 0 0" : "1 0 0 0"));
+    public static int getMinValue()  {
+        return 255;
+    }
+
+    public static int getDefValue() {
+        return getMaxValue();
+    }
+
+    public static String getCurColors()  {
+        return FileUtils.readOneLine(COLOR_FILE);
+    }
+
+    public static boolean setColors(String colors) {
+        return FileUtils.writeLine(COLOR_FILE, colors);
     }
 }

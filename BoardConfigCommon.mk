@@ -14,9 +14,9 @@
 # limitations under the License.
 
 # inherit from the proprietary version
--include vendor/lge/g3-common/BoardConfigVendor.mk
+-include vendor/lge/g3duo-common/BoardConfigVendor.mk
 
-LOCAL_PATH := device/lge/g3-common
+LOCAL_PATH := device/lge/g3duo-common
 
 TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
 
@@ -63,8 +63,8 @@ COMMON_GLOBAL_CFLAGS += -DPROPERTY_PERMS_APPEND=' \
     { "persist.data.front.minfps", AID_MEDIA, 0 }, \
     '
 
-# CMHW
-BOARD_HARDWARE_CLASS := $(LOCAL_PATH)/cmhw/
+# MKHW
+BOARD_HARDWARE_CLASS := $(LOCAL_PATH)/mkhw/
 
 # Crypto
 TARGET_HW_DISK_ENCRYPTION := true
@@ -110,12 +110,12 @@ TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 TARGET_USERIMAGES_USE_EXT4 := true
 
 # Radio
-BOARD_RIL_CLASS := ../../../device/lge/g3-common/ril/
+BOARD_RIL_CLASS := ../../../device/lge/g3duo-common/ril/
 TARGET_RELEASE_CPPFLAGS += -DNEEDS_LGE_RIL_SYMBOLS
 
 # SELinux
 include device/qcom/sepolicy/sepolicy.mk
-BOARD_SEPOLICY_DIRS += device/lge/g3-common/sepolicy
+BOARD_SEPOLICY_DIRS += device/lge/g3duo-common/sepolicy
 
 BOARD_SEPOLICY_UNION += \
     device.te \
